@@ -1,0 +1,1 @@
+Diretório destinado aos arquivos da distribuição da API.
