@@ -1,16 +1,11 @@
-import {
-    MigrationInterface,
-    QueryRunner,
-    Table,
-    TableForeignKey,
-} from 'typeorm';
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateTableUsuarios1592765861795
+export default class CreateTableLista1593537055070
     implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'templates',
+                name: 'listas',
                 columns: [
                     {
                         name: 'id',
@@ -20,14 +15,15 @@ export default class CreateTableUsuarios1592765861795
                         default: 'uuid_generate_v4()',
                     },
                     {
-                        name: 'data',
-                        type: 'timestamp with time zone',
+                        name: 'nome',
+                        type: 'varchar',
                         isNullable: false,
                     },
                     {
-                        name: 'id_usuario',
-                        type: 'uuid',
+                        name: 'concluida',
+                        type: 'boolean',
                         isNullable: false,
+                        default: false,
                     },
                     {
                         name: 'created_at',
@@ -42,23 +38,9 @@ export default class CreateTableUsuarios1592765861795
                 ],
             }),
         );
-
-        await queryRunner.createForeignKey(
-            'templates',
-            new TableForeignKey({
-                name: 'TemplateIdUsuarioFK',
-                columnNames: ['id_usuario'],
-                referencedColumnNames: ['id'],
-                referencedTableName: 'usuarios',
-                onDelete: 'SET NULL',
-                onUpdate: 'CASCADE',
-            }),
-        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('templates', 'TemplateIdUsuarioFK');
-
-        await queryRunner.dropTable('templates');
+        await queryRunner.dropTable('listas');
     }
 }

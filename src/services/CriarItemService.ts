@@ -6,10 +6,11 @@ import Item from '../models/Item';
 interface Request {
     nome: string;
     qtde: number;
+    id_lista: string;
 }
 
 class CriarItemService {
-    public async execute({ nome, qtde }: Request): Promise<Item> {
+    public async execute({ nome, qtde, id_lista }: Request): Promise<Item> {
         const itensRepository = getRepository(Item);
 
         /**
@@ -19,8 +20,10 @@ class CriarItemService {
             throw new AppError('O nome do item deve ser preenchido.');
         }
 
-        if (qtde <= 0) {
-            throw new AppError('A quantidade do item deve ser maior que zero.');
+        if (qtde < 0) {
+            throw new AppError(
+                'A quantidade do item deve ser maior ou igual a zero.',
+            );
         }
 
         /**
@@ -30,6 +33,7 @@ class CriarItemService {
         const item = itensRepository.create({
             nome,
             qtde,
+            id_lista,
         });
 
         /**

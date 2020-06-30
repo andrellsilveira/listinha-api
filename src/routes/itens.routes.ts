@@ -15,11 +15,11 @@ itensRouter.get('/', async (request, response) => {
 });
 
 itensRouter.post('/', async (request, response) => {
-    const { nome, qtde } = request.body;
+    const { nome, qtde, id_lista } = request.body;
 
     const criarItem = new CriarItemService();
 
-    const lista = await criarItem.execute({ nome, qtde });
+    const lista = await criarItem.execute({ nome, qtde, id_lista });
 
     return response.json(lista);
 });

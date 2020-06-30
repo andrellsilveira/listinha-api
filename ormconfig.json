@@ -2,9 +2,9 @@
 	"type": "postgres",
 	"host": "localhost",
 	"port": 5432,
-	"username": "usuario",
-	"password": "senha",
-	"database": "nome_da_base",
+	"username": "postgres",
+	"password": "alls_listinha",
+	"database": "listinha",
 	"entities": [
       "./src/models/*.ts"
   ],

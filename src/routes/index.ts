@@ -1,7 +1,11 @@
 import { Router } from 'express';
 
+import listasRouter from './listas.routes';
+import itensRouter from './itens.routes';
+
 const routes = Router();
 
-routes.get('/', (request, response) => response.json({ message: 'Hello World' }));
+routes.use('/listas', listasRouter);
+routes.use('/itens', itensRouter);
 
 export default routes;
