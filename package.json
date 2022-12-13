@@ -24,7 +24,7 @@
     "@typescript-eslint/parser": "^2.30.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-async-errors": "^3.1.1",
     "pg": "^8.2.1",
     "reflect-metadata": "^0.1.13",
